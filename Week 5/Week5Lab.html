@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>Week 5 Lab</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1 v-text="sitename" id="Title"></h1>
+            
+        </header>
+        <main>
+    <div v-if = 'showProduct'>
+        <div id="product_holder">
+            <figure>
+                <img v-bind:src="product.image" style="float: left; margin-left:-30px ;">
+            </figure>
+        <div id="text">
+            <h2 v-text="product.title"></h2>
+            <p v-html="product.description"></p>
+            <p>Price: {{product.price}}</p>
+            <p id="availSpaces">Number of Spaces: {{product.availableSpaces}}</p>
+        </div>
+            <button v-on:click='addToCart' v-if='canAddToCart' id="addtocartBtn"> Add to Cart</button>
+            <button disabled = 'disabled' v-else id="addtocartBtn"> Add to Cart</button> 
+        </div>
+            <button v-on:click = 'showCheckout' id="checkoutBtn">{{cartItemCount}} 
+                <span class="fa fa-cart-plus"> </span> Checkout 
+            </button>
+    </div>
+        <div v-else = 'showCheckout'>
+            <h1>test</h1>
+        </div>
+        </main>
+    </div>
+
+    <script type="text/javascript">
+        var webstore = new Vue({
+            el: '#app',
+            data: {
+                showProduct: true,
+                sitename: 'After School Club',
+                product: {
+                    id: 1001,
+                    title: "Math",
+                    description: "London",
+                    price: 100,
+                    image: "images/math.jpg",
+                    availableSpaces: 5
+                },
+                cart: [] //creation of an empty array called cart
+            },
+            methods:{
+                addToCart: function(){
+                    // product id (in this case 1001) will be stored in the cart array
+                    this.product.availableSpaces -= 1;
+                    this.cart.push(this.product.id);
+                    
+                },
+                showCheckout: function() {
+                    this.showProduct = this.showProduct ? false: true;
+                },
+
+            },
+            computed:{
+                cartItemCount: function(){
+                    return this.cart.length || '';
+                },
+                canAddToCart: function(){
+                    return 5 > this.cartItemCount;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

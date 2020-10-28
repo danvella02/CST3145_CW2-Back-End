@@ -1,0 +1,24 @@
+body{
+    font-family: 'Staatliches', cursive;
+}
+
+#title{
+    text-align: center;
+    border-bottom: 2px solid lightgray;
+ 
+}
+#product_holder{
+    border: 10px solid red;
+    height: 250px;
+    width: 450px;
+}
+
+#text{
+    padding-left: 260px;
+}
+#addtocartBtn{
+    margin-left: 10px;
+}
+#checkoutBtn{
+    margin-top: 20px;
+}
