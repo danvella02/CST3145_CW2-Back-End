@@ -64,7 +64,9 @@
                 showCheckout: function() {
                     this.showProduct = this.showProduct ? false: true;
                 },
-
+             canAddToCart: function(){
+                    return 5 > this.cartItemCount;
+                }
             },
             computed:{
                 cartItemCount: function(){
