@@ -59,3 +59,16 @@ body{
 #checkoutbutton:hover {
 	opacity: 0.7;
 }
+.sortBtn{
+  background-color: #4CAF50; /* Green */
+  border: 1px solid green;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sortBtn:hover{
+	background-color: #3e8e41;
+}
