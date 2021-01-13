@@ -17,6 +17,38 @@ created: function() {
   }
 })
 
+const newProduct = {title: 'new product'
+, price: 49};
+// set the url to your server and route
+fetch('https://cst3145.herokuapp.com/collection/products'
+, {
+method: 'POST'
+, // set the HTTP method as 'POST'
+headers: {
+'Content-Type': 'application/json'
+, // set the data type as JSON
+},
+body: JSON.stringify(newProduct), // need to stringify the JSON object
+})
+.then(response => response.json())
+.then(responseJSON => {
+console.log('Success:'
+, responseJSON);
+});
+
+app.use(function(req, res, next) {
+// allow different IP address
+res.header("Access-Control-Allow-Origin"
+,
+"*");
+// allow different header fields
+res.header("Access-Control-Allow-Headers"
+,
+"*");
+next();
+});
+
+
 app.use(express.json());
 
 const MongoClient = require('mongodb').MongoClient;
