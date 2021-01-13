@@ -1,6 +1,22 @@
 const express = require ('express');
 const app = express ();
 
+let store = new Vue({
+    data: { products: {} },
+// this function runs when creating the Vue instance
+created: function() {
+    // replace the URL to your Heroku app and route
+    fetch('https://cst3145-cw2.herokuapp.com/collection/products').then(
+        function (response) {
+        response.json().then(
+            function (json) {
+                // note that we used 'store.product' instead of 'this.product'
+                store.products = json;
+            });
+        })
+  }
+})
+
 app.use(express.json());
 
 const MongoClient = require('mongodb').MongoClient;
