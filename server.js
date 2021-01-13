@@ -82,9 +82,9 @@ headers: {
 body: JSON.stringify(newProduct), // need to stringify the JSON object
 })
 .then(response => response.json())
-.then(responseJSON => {
+.then(newProduct => {
 console.log('Success:'
-, responseJSON);
+, newProduct);
 });
 
 app.use(function(req, res, next) {
