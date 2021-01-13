@@ -72,8 +72,7 @@ app.delete('/collection/:collectionName/:id', (req, res, next) => {
 const newProduct = {title: 'new product'
 , price: 49};
 // set the url to your server and route
-fetch('https://cst3145-cw2.herokuapp.com/collection/products'
-, {
+fetch('https://cst3145-cw2.herokuapp.com/collection/products', {
 method: 'POST'
 , // set the HTTP method as 'POST'
 headers: {
