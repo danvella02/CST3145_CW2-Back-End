@@ -68,4 +68,5 @@ app.delete('/collection/:collectionName/:id', (req, res, next) => {
                 {msg: 'success'} : {msg: 'error'})
     })
 })
-app.listen(3000)
+const port = process.env.PORT || 3000
+app.listen(port)
