@@ -69,6 +69,23 @@ app.delete('/collection/:collectionName/:id', (req, res, next) => {
     })
 })
 
+let store = new Vue({
+data: { products: {} },
+// this function runs when creating the Vue instance
+created: function() {
+// replace the URL to your Heroku app and route
+fetch('https://cst3145-cw2.herokuapp.com/collection/products').then(
+function (response) {
+response.json().then(
+function (json) {
+// note that we used 'store.product' instead of 'this.product'
+store.products = json;
+});
+})
+}
+})
+
+
 const newProduct = {title: 'new product'
 , price: 49};
 // set the url to your server and route
