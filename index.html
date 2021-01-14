@@ -1,0 +1,28 @@
+<html>
+   <head>
+      <title>Week 5 Lab</title>
+      <script src="https://unpkg.com/vue"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="stylesheet.css">
+   </head>
+   <body>
+      <script type="text/javascript">
+         let store = new Vue({
+            data: { products: {} },
+            // this function runs when creating the Vue instance
+            created: function() {
+            // replace the URL to your Heroku app and route
+            fetch('https://cst3145-cw2.herokuapp.com/collection/products').then(
+                function (response) {
+                    response.json().then(
+                        function (json) {
+                        // note that we used 'store.product' instead of 'this.product'
+                        store.products = json;
+                    });
+            })
+    }
+})
+
+      </script>
+   </body>
+</html>
